@@ -2,4 +2,11 @@
 ro.netflix.bsp_rev=Q6150-17263-1
 
 # Set stock DPI
-ro.sf.lcd_density=440
+ro.sf.lcd_density=500
+
+#for CTS fps
+ro.vendor.display.default_fps=60
+
+# Wireless display
+persist.debug.wfd.enable=1
+persist.sys.wfd.virtual=0

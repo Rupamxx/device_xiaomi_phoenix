@@ -78,6 +78,10 @@ TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
 BOARD_HAS_QCA_FM_SOC := "cherokee"
 BOARD_HAVE_QCOM_FM := true
 
+# Graphics
+VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
+SF_VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
+
 # Init
 TARGET_INIT_VENDOR_LIB := //$(DEVICE_PATH):libinit_phoenix
 TARGET_RECOVERY_DEVICE_MODULES := libinit_phoenix
@@ -91,7 +95,7 @@ BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_SEPARATED_DTBO := true
 BOARD_KERNEL_CMDLINE := console=ttyMSM0,115200n8 earlycon=msm_geni_serial,0x880000 androidboot.hardware=qcom androidboot.console=ttyMSM0 androidboot.memcg=1 lpm_levels.sleep_disabled=1 video=vfb:640x400,bpp=32,memsize=3072000 msm_rtb.filter=0x237 service_locator.enable=1 swiotlb=1  loop.max_part=7 androidboot.usbcontroller=a600000.dwc3
-BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+# BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 BOARD_KERNEL_CMDLINE += androidboot.init_fatal_reboot_target=recovery
 TARGET_KERNEL_ARCH := arm64
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
@@ -125,6 +129,7 @@ TARGET_COPY_OUT_PRODUCT := product
 BUILD_WITHOUT_VENDOR := true
 BOARD_USES_PRODUCTIMAGE := true
 BOARD_USES_METADATA_PARTITION := true
+TARGET_USES_SYSTEM_AS_ROOT := true
 
 # Power
 TARGET_USES_INTERACTION_BOOST := true
@@ -159,6 +164,10 @@ TARGET_PROVIDES_QTI_TELEPHONY_JAR := true
 # Power
 TARGET_TAP_TO_WAKE_NODE := "/dev/input/event3"
 
+# Properties
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
+
 # Treble
 BOARD_VNDK_VERSION := current
 
@@ -170,3 +179,5 @@ BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 2
 # Inherit from the proprietary version
 -include vendor/xiaomi/phoenix/BoardConfigVendor.mk
 
+# ANXCamera
+-include vendor/aeonax/ANXCamera/BoardConfigAnx.mk

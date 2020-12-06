@@ -12,10 +12,6 @@ PRODUCT_PRODUCT_PROPERTIES += \
     ro.adb.secure=0
 endif
 
-# Camera
-PRODUCT_PRODUCT_PROPERTIES += \
-    vendor.camera.aux.packagelist=org.lineageos.snap,net.sourceforge.opencamera,org.codeaurora.snapcam
-
 # Telephony
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.telephony.default_network=22,22 \
